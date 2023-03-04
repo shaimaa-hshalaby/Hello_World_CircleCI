@@ -12,7 +12,7 @@ jobs:
     steps:
       - run:
           name: "print branch"
-          command: "echo Branch Name : <CIRCLE_BRANCH>"
+          command: "echo Branch Name : $CIRCLE_BRANCH"
 
   print-workflow-id:
     docker:
@@ -21,7 +21,7 @@ jobs:
     steps:
       - run:
           name: "print workflow_id"
-          command: "echo workflow id <CIRCLE_WORKFLOW_ID>"
+          command: "echo workflow id $CIRCLE_WORKFLOW_ID"
 
   print-build-number:
     docker:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - run:
           name: "print build_number"
-          command: "echo workflow id <CIRCLE_BUILD_NUM>"
+          command: "echo workflow id $CIRCLE_BUILD_NUM"
 
   print-pr-number:
     docker:
@@ -39,7 +39,7 @@ jobs:
     steps:
       - run:
           name: "print pull_request_number"
-          command: "echo workflow id <CIRCLE_PR_NUMBER>"
+          command: "echo workflow id $CIRCLE_PR_NUMBER"
 
   print-last-commit-hash:
     docker:
@@ -48,7 +48,7 @@ jobs:
     steps:
       - run:
           name: "print last_commit_hash"
-          command: "echo workflow id <CIRCLE_SHA1>"
+          command: "echo workflow id $CIRCLE_SHA1"
           
 
 workflows:
