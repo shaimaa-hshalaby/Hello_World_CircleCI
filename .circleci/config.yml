@@ -5,27 +5,66 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  print-hello:
+  print-branch:
     docker:
       - image: circleci/node:13.8.0
 
     steps:
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: "print branch"
+          command: "echo Branch Name : <CIRCLE_BRANCH>"
 
-  print-welcome:
+  print-workflow-id:
     docker:
       - image: circleci/node:13.8.0
 
     steps:
       - run:
-          name: "Say welcome"
-          command: "echo Welcome, World!"
+          name: "print workflow_id"
+          command: "echo workflow id <CIRCLE_WORKFLOW_ID>"
+
+  print-build-number:
+    docker:
+      - image: circleci/node:13.8.0
+
+    steps:
+      - run:
+          name: "print build_number"
+          command: "echo workflow id <CIRCLE_BUILD_NUM>"
+
+  print-pr-number:
+    docker:
+      - image: circleci/node:13.8.0
+
+    steps:
+      - run:
+          name: "print pull_request_number"
+          command: "echo workflow id <CIRCLE_PR_NUMBER>"
+
+  print-last-commit-hash:
+    docker:
+      - image: circleci/node:13.8.0
+
+    steps:
+      - run:
+          name: "print last_commit_hash"
+          command: "echo workflow id <CIRCLE_SHA1>"
+          
+
 workflows:
   welcome-workflow:
     jobs:
-      - print-hello
-      - print-welcome:
-           requires:
-             - print-hello
+      - print-branch
+      - print-workflow-id:
+          requires:
+            - print-branch
+      - print-build-number:
+          requires:
+            - print-workflow-id
+      - print-pr-number:
+          requires:
+            - print-build-number
+      - print-last-commit-hash:
+          requires:
+            - print-pr-number
+
