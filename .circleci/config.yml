@@ -39,7 +39,7 @@ jobs:
     steps:
       - run:
           name: "print pull_request_number"
-          command: "echo workflow id $CIRCLE_PR_NUMBER"
+          command: "echo pull request number $CIRCLE_PR_NUMBER"
 
   print-last-commit-hash:
     docker:
@@ -48,7 +48,7 @@ jobs:
     steps:
       - run:
           name: "print last_commit_hash"
-          command: "echo workflow id $CIRCLE_SHA1"
+          command: "echo last commit hash $CIRCLE_SHA1"
           
 
 workflows:
